@@ -71,8 +71,12 @@ public class MainActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                rotateAnimator.setDuration(SPEED[seekBar.getProgress()]);
-                rotateAnimator.start();
+                if (toggleButton.isChecked()) {
+                    rotateAnimator.setDuration(SPEED[seekBar.getProgress()]);
+                    rotateAnimator.start();
+                } else {
+                    rotateAnimator.end();
+                }
             }
 
             @Override
